@@ -1,5 +1,8 @@
+Pavithra/terraform/day3/.terraform/
+Pavithra/terraform/day3/.terraform.lock.hcl
+Pavithra/terraform/day3/*.tfstate
+Pavithra/terraform/day3/.tfstate.
+Pavithra/terraform/day3/*.tfvars
 .terraform/
 *.tfstate
 *.tfstate.*
-.terraform.lock.hcl
-*.tfvars
