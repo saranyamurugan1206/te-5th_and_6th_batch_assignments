@@ -7,9 +7,8 @@ on:
       name:
         description: "Enter your name"
         required: true
-        default: "Saranya M"
         type: string
-
+        
       environment:
         description: "Choose environment"
         required: true
