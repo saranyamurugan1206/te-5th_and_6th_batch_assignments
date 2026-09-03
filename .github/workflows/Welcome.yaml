@@ -1,0 +1,56 @@
+# .github/workflows/greet.yml
+name: DevOps Workflow
+
+on:
+   workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter your name"
+        required: true
+        default: "Saranya M"
+        type: string
+
+      environment:
+        description: "Choose environment"
+        required: true
+        type: choice
+        options:
+          - dev
+          - test
+          - staging
+          - production
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print greeting
+        run: echo "Hello! Welcome to the DevOps workflow!"
+
+      - name: Show runner info
+        run: |
+          echo "Running on: $RUNNER_OS"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Triggered by: ${{ github.actor }}"
+
+      - name: Print user input
+        run: |
+          echo "User name: ${{ inputs.name }}"
+
+      - name:  Print selected environment   
+        run: |
+          echo "Selected environment: ${{ inputs.environment }}" 
+    
+
+      - name: Print secret
+        run: |
+          echo "My secret is: ${{ secrets.MY_SECRETS }}" 
+
+      - name: Admin-only step
+        if: ${{ inputs.name == 'admin' }}
+        run: |
+          echo "Welcome Admin! This step runs only for admin."           
+
+      - name: List files
+        run: ls -la
